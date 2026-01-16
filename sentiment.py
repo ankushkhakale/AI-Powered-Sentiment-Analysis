@@ -1,5 +1,5 @@
 import requests
-import gradio as gd
+import gradio as gr
 
 #Deepseek URL
 OLLAMA_URL = "http://localhost:11434/api/generate"
@@ -8,9 +8,9 @@ def analyze_sentiment(text, language='English'):
     """
     Uses Deepseek API to analyze the sentiment of the given text.
     """
-    prompt = f"Analyze the sentiment of the following text and highlight wwords that ccontribute in it:\n\n{text}"
+    prompt = f"Analyze the sentiment of the following text and highlight words that contribute in it:\n\n{text}"
     payload = {
-        "model": "deepseek-r1";
+        "model": "deepseek-r1",
         "prompt": prompt,
         "stream": False,
     }
@@ -25,7 +25,7 @@ interface = gr.Interface(
     fn=analyze_sentiment,
     inputs=gr.Textbox(lines=3,placeholder="Enter text to analyze sentiment..."),
     outputs=gr.Textbox(label="Sentiment Analysis Result"),
-    title="AI-Poewred Sentiment Analyzer",
+    title="AI-Powered Sentiment Analyzer",
     description="Analyze the sentiment of your text and deepseek AI will classify it's sentiment as positive, negative, or neutral."
 )
 
